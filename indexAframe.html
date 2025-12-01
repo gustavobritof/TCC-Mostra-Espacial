@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <title>Museu Virtual WebXR</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            pointer-events: auto;
+            z-index: 100;
+        }
+
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 300px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="info">
+        <strong>🚀 Museu Espacial 3D</strong><br>
+        Bem-vindo ao museu!
+    </div> -->
+
+    <a-scene>
+        <!-- Assets -->
+        <a-assets>
+            <img id="skyTexture" src="./images/sky.jpg" alt="Sky">
+            <a-asset-item id="hubbleModel" src="./models/hubble.glb"></a-asset-item>
+            <a-asset-item id="jwstModel" src="./models/jwst_james_webb_space_telescope.glb"></a-asset-item>
+            <a-asset-item id="saturnVModel" src="./models/saturnVCorrect.glb"></a-asset-item>
+            <a-asset-item id="issModel" src="./models/ISS Correctglb.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- Câmera com controles -->
+        <!-- <a-entity id="rig" position="0 1.6 5" wasd-controls="acceleration: 25" look-controls>
+            <a-entity camera position="0 0 0" look-controls>
+            </a-entity>
+        </a-entity> -->
+
+        <!-- Iluminação -->
+        <a-light type="ambient" color="#fff" intensity="0.1"></a-light>
+        <a-light type="directional" color="#fff" intensity="1" position="5 10 5"></a-light>
+
+        <!-- Chão -->
+        <a-plane id="ground" rotation="-90 0 0" width="50" height="50" color="#808080" roughness="0.8">
+        </a-plane>
+
+        <!-- Céu (skybox) -->
+        <a-sky src="#skyTexture" rotation="0 0 0"></a-sky>
+
+        <!-- Parede de trás -->
+        <a-box position="0 2.5 -10" width="20" height="5" depth="0.2" color="#f5f5dc" roughness="0.7">
+        </a-box>
+
+        <!-- Parede lateral esquerda -->
+        <a-box position="-10 2.5 0" width="0.2" height="5" depth="20" color="#f5f5dc" roughness="0.7">
+        </a-box>
+
+        <!-- Parede lateral direita -->
+        <a-box position="10 2.5 0" width="0.2" height="5" depth="20" color="#f5f5dc" roughness="0.7">
+        </a-box>
+
+        <!-- Pinturas na parede de trás -->
+        <a-box position="-8 2 -9.9" width="1.5" height="0.1" depth="2" color="#ff6b6b" roughness="0.3"
+            rotation="90 0 0"></a-box>
+
+        <a-box position="-4 2 -9.9" width="1.5" height="0.1" depth="2" color="#4ecdc4" roughness="0.3"
+            rotation="90 0 0"></a-box>
+        <a-box position="0 2 -9.9" width="1.5" height="0.1" depth="2" color="#ffe66d" roughness="0.3"
+            rotation="90 0 0"></a-box>
+        <a-box position="4 2 -9.9" width="1.5" height="0.1" depth="2" color="#95e1d3" roughness="0.3"
+            rotation="90 0 0"></a-box>
+        <a-box position="8 2 -9.9" width="1.5" height="0.1" depth="2" color="#f38181" roughness="0.3"
+            rotation="90 0 0"></a-box>
+
+        <!-- Portais de panorama -->
+        <!-- <a-cylinder position="-7 0.25 8" radius="1" height="0.5" color="#00ff88" metalness="0.8" roughness="0.2"
+            class="portal" data-env="kennedy" data-label="🚀 Kennedy Space Center">
+        </a-cylinder>
+
+        <a-cylinder position="0 0.25 8" radius="1" height="0.5" color="#00ff88" metalness="0.8" roughness="0.2"
+            class="portal" data-env="iss-lab" data-label="🛰️ ISS Laboratory">
+        </a-cylinder>
+
+        <a-cylinder position="7 0.25 8" radius="1" height="0.5" color="#00ff88" metalness="0.8" roughness="0.2"
+            class="portal" data-env="launch-pad" data-label="🔥 Launch Pad">
+        </a-cylinder> -->
+
+        <!-- Pedestais vazios  -->
+        <a-cylinder position="-5 0.5 -5" radius="0.5" height="1" color="#cccccc" roughness="0.7"></a-cylinder>
+        <a-cylinder position="0 0.5 -5" radius="0.5" height="1" color="#cccccc" roughness="0.7"></a-cylinder>
+        <a-cylinder position="5 0.5 -5" radius="0.5" height="1" color="#cccccc" roughness="0.7"></a-cylinder>
+        <a-cylinder position="-5 0.5 0" radius="0.5" height="1" color="#cccccc" roughness="0.7"></a-cylinder>
+        <a-cylinder position="5 0.5 0" radius="0.5" height="1" color="#cccccc" roughness="0.7"></a-cylinder>
+
+        <!-- Modelos 3D nas posições dos pedestais -->
+        <a-entity gltf-model="#hubbleModel" position="-5 1.5 -5" scale="0.0003 0.0003 0.0003"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
+        <a-entity gltf-model="#jwstModel" position="0 1.5 -5" scale="0.05 0.05 0.05"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"
+            material="emissive: #333333; emissiveIntensity: 0.5"></a-entity>
+        <a-entity gltf-model="#saturnVModel" position="5 1.5 -5" scale="0.3 0.3 0.3"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"></a-entity>
+        <a-entity gltf-model="#issModel" position="-5 1.5 0" scale="0.1 0.1 0.1"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"></a-entity>
+
+    </a-scene>
+
+
+</body>
+
+</html>
