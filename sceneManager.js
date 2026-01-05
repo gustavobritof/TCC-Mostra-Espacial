@@ -20,3 +20,28 @@ window.addEventListener('load', () => {
     document.body.style.opacity = '1';
 });
 
+// Hover para quando o cursor passar sobre os modelos 3D
+AFRAME.registerComponent('cursor-hover', {
+    schema: {
+        cursorColor: { type: 'string', default: 'green' },
+        originalColor: { type: 'string', default: 'black' }
+    },
+    init: function () {
+        const cursor = document.querySelector('a-cursor');
+        const originalColor = cursor.getAttribute('color');
+        const hoverColor = this.data.cursorColor;
+
+        this.el.addEventListener('mouseenter', () => {
+            cursor.setAttribute('color', hoverColor);
+            cursor.setAttribute('radiusInner', '0.005');
+            cursor.setAttribute('radiusOuter', '0.015');
+        });
+
+        this.el.addEventListener('mouseleave', () => {
+            cursor.setAttribute('color', this.data.originalColor);
+            cursor.setAttribute('radiusInner', '0.003');
+            cursor.setAttribute('radiusOuter', '0.01');
+        });
+    }
+
+});

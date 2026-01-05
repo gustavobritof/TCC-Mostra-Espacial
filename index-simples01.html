@@ -23,19 +23,18 @@
 
 <body>
 
-
-
     <a-scene id="scene01">
 
         <a-assets>
-            <img id="skyTexture" src="/images/museum_sky.jpg">
+            <img id="skyTexture" src="/images/sky.jpg">
             <a-asset-item id="hubble-model" src="/models/hubble.glb"></a-asset-item>
             <a-asset-item id="jwst-model" src="/models/jwst_james_webb_space_telescope.glb"></a-asset-item>
             <a-asset-item id="saturnv-model" src="/models/saturnV.glb"></a-asset-item>
             <a-asset-item id="iss-model" src="/models/ISS_Correct.glb"></a-asset-item>
             <a-asset-item id="voyager-model" src="/models/Voyager 1.glb"></a-asset-item>
-        </a-assets>
 
+        </a-assets>
+        <a-sky src="#skyTexture"></a-sky>
         <a-camera position="0 1.6 0">
             <a-cursor></a-cursor>
         </a-camera>
@@ -101,7 +100,7 @@
                 metalness="0.5"></a-box>
         </a-entity>
 
-        <!-- Exibições (MANUALMENTE CRIADAS) -->
+        <!-- Exibições  -->
         <a-entity id="exhibits-container">
             <!-- Hubble -->
             <a-entity position="-5 0 -5">
@@ -113,7 +112,7 @@
                     metalness="0.3"></a-box>
 
                 <a-entity gltf-model="#hubble-model" position="0 2 0" scale="0.0003 0.0003 0.0003"
-                    class="clickable exhibit-model" data-exhibit-id="hubble"
+                    class="clickable exhibit-model" data-exhibit-id="hubble" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane position="0 0.2 0.61" width="1" height="0.3" color="#ecf0f1" roughness="0.4"></a-plane>
@@ -130,7 +129,7 @@
                     metalness="0.3"></a-box>
 
                 <a-entity gltf-model="#jwst-model" position="0 2 0" scale="0.05 0.05 0.05"
-                    class="clickable exhibit-model" data-exhibit-id="jwst"
+                    class="clickable exhibit-model" data-exhibit-id="jwst" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane position="0 0.2 0.61" width="1" height="0.3" color="#ecf0f1" roughness="0.4"></a-plane>
@@ -147,7 +146,7 @@
                     metalness="0.3"></a-box>
 
                 <a-entity gltf-model="#saturnv-model" position="0 2 0" scale="0.2 0.2 0.2"
-                    class="clickable exhibit-model" data-exhibit-id="saturnv"
+                    class="clickable exhibit-model" data-exhibit-id="saturnv" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane position="0 0.2 0.61" width="1" height="0.3" color="#ecf0f1" roughness="0.4"></a-plane>
@@ -165,7 +164,7 @@
                     metalness="0.3"></a-box>
 
                 <a-entity gltf-model="#iss-model" position="0 2 0" scale="0.1 0.1 0.1" class="clickable exhibit-model"
-                    data-exhibit-id="iss"
+                    data-exhibit-id="iss" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane position="0.61 0.2 0" width="1" height="0.3" color="#ecf0f1" roughness="0.4"
@@ -184,8 +183,8 @@
                     metalness="0.3"></a-box>
 
                 <a-entity gltf-model="#voyager-model" position="0 2 0" scale="0.15 0.15 0.15"
-                    class="clickable exhibit-model" data-exhibit-id="voyager" rotation="0 0 45"
-                    animation="property: rotation; to: 0 0 405; loop: true; dur: 10000; easing: linear"></a-entity>
+                    class="clickable exhibit-model" data-exhibit-id="voyager" rotation="0 0 45" cursor-hover
+                    animation="property: rotation; to: 0 360 45; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane position="-0.61 0.2 0" width="1" height="0.3" color="#ecf0f1" roughness="0.4"
                     rotation="0 -90 0"></a-plane>
@@ -194,15 +193,6 @@
             </a-entity>
         </a-entity>
 
-        <!-- Em Breve
-            <a-entity position="5 0 0">
-                <a-box position="0 0.5 0" width="1.2" height="1" depth="1.2" color="#2c3e50" roughness="0.5"></a-box>
-                <a-box position="0 1.2 0" width="1" height="0.2" depth="1" color="#34495e" roughness="0.3"></a-box>
-                <a-plane position="-0.61 0.2 0" width="1" height="0.3" color="#ecf0f1" roughness="0.4"
-                    rotation="0 -90 0"></a-plane>
-                <a-text value="Em Breve" position="-0.61 0.2 0" align="center" anchor="center" color="#2c3e50"
-                    rotation="0 -90 0"></a-text>
-            </a-entity> -->
         </a-entity>
     </a-scene>
 
