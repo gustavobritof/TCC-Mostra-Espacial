@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museu Espacial VR</title>
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script
+        src="https://unpkg.com/aframe-particle-system-component@1.1.5/dist/aframe-particle-system-component.min.js"></script>
     <script src="sceneManager.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/c-frame/aframe-particle-system-component@1.2.0/dist/aframe-particle-system-component.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -68,7 +72,7 @@
             <a-asset-item id="iss-model" src="/models/ISS_Correct.glb"></a-asset-item>
             <a-asset-item id="voyager-model" src="/models/Voyager 1.glb"></a-asset-item>
             <img id="hotspot-img" src="images/HotspotIcon.png">
-            <img id="crossIcon" src="https://coddmac.store/THREE/360/cross-icon.svg">
+            <img id="crossIcon" src="https://img.icons8.com/?size=100&id=43925&format=png&color=FFFFFF" alt="Fechar">
             <img id="backTexture" src="assets/Panoramas/home.png" alt="Tela inicial">
             <!-- TEMPLATE 1: HUBBLE -->
 
@@ -80,11 +84,14 @@
                             value="TELESCOPIO HUBBLE\n\nLancado em 1990, ele revolucionou a astronomia ao capturar imagens sem a distorcao da atmosfera terrestre."
                             align="center" width="2.2" position="0 0.2 0.01" text=""></a-text>
                         <a-image id="close-btn" src="#crossIcon" class="clickable" position="1.1 0.6 0.001" width="0.25"
-                            height="0.25" material="" geometry=""></a-image>
+                            cursor-hover height="0.25" material="" geometry=""></a-image>
                         <a-box id="view-hubble-btn" position="0 -0.5 0.05" width="1.8" height="0.3" depth="0.05"
-                            color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"></a-box>
-                        <a-text value="Ver Hubble em 3D" position="0 -0.5 0.1" align="center" anchor="center"
-                            color="#ffffff" font-size="20"></a-text>
+                            class="clickable" color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"
+                            cursor-hover>
+                            <a-text value="Ir para sala" position="0 0 0.040" align="center" anchor="center"
+                                color="#ffffff" font-size="16"></a-text>
+                        </a-box>
+
                     </a-plane>
                 </a-entity>
             </template>
@@ -97,11 +104,13 @@
                             value="SONDA VOYAGER 1\n\nO objeto humano mais distante da Terra. Atualmente viaja pelo espaco interestelar."
                             align="center" width="2.2" position="0 0.2 0.01"></a-text>
                         <a-image id="close-btn" src="#crossIcon" class="clickable" position="1.1 0.6 0.001" width="0.25"
-                            height="0.25"></a-image>
+                            cursor-hover height="0.25"></a-image>
                         <a-box id="view-voyager-btn" position="0 -0.5 0.05" width="1.8" height="0.3" depth="0.05"
-                            color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"></a-box>
-                        <a-text value="Ver Voyager em 3D" position="0 -0.5 0.1" align="center" anchor="center"
-                            color="#ffffff" font-size="20"></a-text>
+                            class="clickable" color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"
+                            cursor-hover>
+                            <a-text value="Ir para sala" position="0 0 0.040" align="center" anchor="center"
+                                color="#ffffff" font-size="16"></a-text>
+                        </a-box>
                     </a-plane>
                 </a-entity>
             </template>
@@ -114,11 +123,13 @@
                             value="TELESCOPIO JAMES WEBB\n\nO sucessor do Hubble, lancado em 2021. Observa o universo em infravermelho, revelando as primeiras galaxias."
                             align="center" width="2.2" position="0 0.2 0.01"></a-text>
                         <a-image id="close-btn" src="#crossIcon" class="clickable" position="1.1 0.6 0.001" width="0.25"
-                            height="0.25"></a-image>
+                            cursor-hover height="0.25"></a-image>
                         <a-box id="view-jwst-btn" position="0 -0.5 0.05" width="1.8" height="0.3" depth="0.05"
-                            color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"></a-box>
-                        <a-text value="Ver JWST em 3D" position="0 -0.5 0.1" align="center" anchor="center"
-                            color="#ffffff" font-size="20"></a-text>
+                            class="clickable" color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"
+                            cursor-hover>
+                            <a-text value="Ir para sala" position="0 0 0.040" align="center" anchor="center"
+                                color="#ffffff" font-size="16"></a-text>
+                        </a-box>
                     </a-plane>
                 </a-entity>
             </template>
@@ -126,17 +137,18 @@
             <!-- TEMPLATE 4: SATURN V -->
             <template id="infoPanel4">
                 <a-entity rotation="0 -45 0">
-                    <a-plane color="#1a1a1a" height="1.5" width="2.5" position="1.79222 1.2 -0.0711"
-                        rotation="0 -16.71 0" material="side: double">
+                    <a-plane color="#1a1a1a" height="1.5" width="2.5" rotation="0 -16.71 0" material="side: double">
                         <a-text
                             value="FOGUETE SATURN V\n\nO foguete mais poderoso ja construido. Levou os astronautas da Apollo a Lua entre 1969 e 1972."
                             align="center" width="2.2" position="0 0.2 0.01"></a-text>
                         <a-image id="close-btn" src="#crossIcon" class="clickable" position="1.1 0.6 0.001" width="0.25"
-                            height="0.25"></a-image>
+                            cursor-hover height="0.25"></a-image>
                         <a-box id="view-saturnv-btn" position="0 -0.5 0.05" width="1.8" height="0.3" depth="0.05"
-                            color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"></a-box>
-                        <a-text value="Ver Saturn V em 3D" position="0 -0.5 0.1" align="center" anchor="center"
-                            color="#ffffff" font-size="20"></a-text>
+                            class="clickable" color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"
+                            cursor-hover>
+                            <a-text value="Ir para sala" position="0 0 0.040" align="center" anchor="center"
+                                color="#ffffff" font-size="16"></a-text>
+                        </a-box>
                     </a-plane>
                 </a-entity>
             </template>
@@ -149,11 +161,13 @@
                             value="ESTACAO ESPACIAL INTERNACIONAL\n\nUm laboratorio orbital habitado continuamente desde 2000. Simbolo da cooperacao internacional."
                             align="center" width="2.2" position="0 0.2 0.01"></a-text>
                         <a-image id="close-btn" src="#crossIcon" class="clickable" position="1.1 0.6 0.001" width="0.25"
-                            height="0.25"></a-image>
+                            cursor-hover height="0.25"></a-image>
                         <a-box id="view-iss-btn" position="0 -0.5 0.05" width="1.8" height="0.3" depth="0.05"
-                            color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"></a-box>
-                        <a-text value="Ver ISS em 3D" position="0 -0.5 0.1" align="center" anchor="center"
-                            color="#ffffff" font-size="20"></a-text>
+                            class="clickable" color="#ff6600" material="emissive: #ff6600; emissiveIntensity: 0.5;"
+                            cursor-hover>
+                            <a-text value="Ir para sala" position="0 0 0.040" align="center" anchor="center"
+                                color="#ffffff" font-size="16"></a-text>
+                        </a-box>
                     </a-plane>
                 </a-entity>
             </template>
@@ -164,7 +178,7 @@
             animation="property: rotation; to: 0 360 0; loop: true; dur: 365000; easing: linear"></a-sky>
 
         <a-camera id="main-camera" wall-collision position="0 1.6 0" cursor="rayOrigin: mouse"
-            raycaster="objects: .clickable">
+            raycaster="objects: .clickable; far: 20">
 
             <!-- <a-entity
   animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
@@ -176,7 +190,8 @@
   geometry="primitive: ring"></a-entity> -->
 
             <a-cursor color="#ffffff" fuse="true" fuse-timeout="2000"
-                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"></a-cursor>
+                animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 2000; from: 1 1 1; to: 0.1 0.1 0.1"
+                animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 200; to: 1 1 1"></a-cursor>
 
         </a-camera>
 
@@ -356,32 +371,32 @@
             <!-- Quadro 1: ISS -->
             <a-box id="painting-frame-iss" position="-9.85 2.2 0" rotation="0 90 0" width="1.8" height="2.2" depth="0.1"
                 color="#4a2c2a" roughness="0.4"></a-box>
-            <a-box id="painting-iss" class="clickable painting" data-painting-pos="-7 0 -7" position="-9.79 2.2 0"
-                width="1.5" rotation="0 90 0" height="1.9" depth="0.05" src="/images/iss.jpg" roughness="0.8"
+            <a-box id="painting-iss" class=" painting" data-painting-pos="-7 0 -7" position="-9.79 2.2 0" width="1.5"
+                rotation="0 90 0" height="1.9" depth="0.05" src="/images/iss.jpg" roughness="0.8"
                 metalness="0.5"></a-box>
 
             <!-- Quadro 2: Hubble -->
             <a-box id="painting-frame-hubble" position="-5 2.2 -9.85" width="1.8" height="2.2" depth="0.1"
                 color="#1a4d6d" roughness="0.4"></a-box>
-            <a-box id="painting-hubble" class="clickable painting" data-painting-pos="-3.5 0 -7" position="-5 2.2 -9.79"
+            <a-box id="painting-hubble" class=" painting" data-painting-pos="-3.5 0 -7" position="-5 2.2 -9.79"
                 width="1.5" height="1.9" depth="0.05" src="/images/hubble.jpg" roughness="0.8" metalness="0.5"></a-box>
 
             <!-- Quadro 3: JWST -->
             <a-box id="painting-frame-jwst" position="0 2.2 -9.85" width="1.8" height="2.2" depth="0.1" color="#8b5a00"
                 roughness="0.4"></a-box>
-            <a-box id="painting-jwst" class="clickable painting" data-painting-pos="0 0 -7" position="0 2.2 -9.79"
-                width="1.5" height="1.9" depth="0.05" src="/images/jwst.jpg" roughness="0.8" metalness="0.5"></a-box>
+            <a-box id="painting-jwst" class=" painting" data-painting-pos="0 0 -7" position="0 2.2 -9.79" width="1.5"
+                height="1.9" depth="0.05" src="/images/jwst.jpg" roughness="0.8" metalness="0.5"></a-box>
             <!-- Quadro 4: saturnV -->
             <a-box id="painting-frame-saturnv" position="5 2.2 -9.85" width="1.8" height="2.2" depth="0.1"
                 color="#1e5631" roughness="0.4"></a-box>
-            <a-box id="painting-saturnv" class="clickable painting" data-painting-pos="3.5 0 -7" position="5 2.2 -9.79"
+            <a-box id="painting-saturnv" class=" painting" data-painting-pos="3.5 0 -7" position="5 2.2 -9.79"
                 width="1.5" height="1.9" depth="0.05" src="/images/saturnV.jpg" roughness="0.8" metalness="0.5"></a-box>
 
             <!-- Quadro 5: Voyager -->
             <a-box id="painting-frame-voyager" position="9.85 2.2 0" width="1.8" height="2.2" depth="0.1"
                 color="#5b2c6f" rotation="0 90 0" roughness="0.4"></a-box>
-            <a-box id="painting-voyager" class="clickable painting" data-painting-pos="7 0 -7" position="9.79  2.2 0"
-                width="1.5" rotation="0 90 0" height="1.9" depth="0.05" src="/images/voyager.jpg" roughness="0.8"
+            <a-box id="painting-voyager" class=" painting" data-painting-pos="7 0 -7" position="9.79  2.2 0" width="1.5"
+                rotation="0 90 0" height="1.9" depth="0.05" src="/images/voyager.jpg" roughness="0.8"
                 metalness="0.5"></a-box>
         </a-entity>
 
@@ -401,26 +416,28 @@
                 <a-light type="point" intensity="0.3" position="0 1.3 0" color="#7ec0ee" distance="2"></a-light>
 
                 <a-entity id="hubble-model-entity" gltf-model="#hubble-model" position="0 2 0"
-                    scale="0.0003 0.0003 0.0003" class="clickable exhibit-model" data-exhibit-id="hubble" cursor-hover
+                    scale="0.0003 0.0003 0.0003" class="clickable exhibit-model" data-exhibit-id="hubble"
+                    data-triggerable-button="1" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-entity id="hubble-label-container" position="0.425 0.2 0.450" rotation="0 45 0">
                     <a-plane id="hubble-label-bg" position="0 0 0" width="1" height="0.3" color="#ecf0f1"
                         roughness="0.4"></a-plane>
-                    <a-text id="hubble-label-text" value="🔭 Hubble" position="0 0 0" align="center" anchor="center"
-                        color="#2c3e50"></a-text>
+                    <a-text id="hubble-label-text" value=" Hubble" position="0 0 0" align="center" anchor="center"
+                        font="roboto" color="#2c3e50"></a-text>
                 </a-entity>
 
-                <a-entity id="hubble-hotspot-container" position="0.5 0.7 0.52">
+                <a-entity id="hubble-hotspot-container" position="0.434 0.7 0.434">
                     <a-image id="hubble-hotspot-icon" src="#hotspot-img" class="clickable" data-triggerable-button="1"
-                        billboard="" scale="0.5 0.5 0.5" material="" geometry="" rotation="0 45 0"></a-image>
+                        billboard="" scale="0.5 0.5 0.5" material="" geometry="" rotation="0 45 0"
+                        cursor-hover></a-image>
                     <a-entity id="infoPanelContainer1"></a-entity>
                 </a-entity>
 
             </a-entity>
 
             <!-- JWST -->
-            <a-entity id="jwst" position="0 0 -5">
+            <a-entity id="jwst" position="0 0 -6">
                 <a-box id="jwst-pedestal-base" position="0 0.5 0" width="1.2" height="1" depth="1.2" color="#34495e"
                     roughness="0.4" material="emissive: #1a252f; emissiveIntensity: 0.2"></a-box>
                 <a-box id="jwst-pedestal-mid" position="0 1.05 0" width="1.25" height="0.1" depth="1.25" color="#2c3e50"
@@ -430,7 +447,7 @@
                 <!-- Luz no pedestal -->
                 <a-light type="point" intensity="0.3" position="0 1.3 0" color="#ffa500" distance="2"></a-light>
                 <a-entity id="jwst-model-entity" gltf-model="#jwst-model" position="0 2 0" scale="0.05 0.05 0.05"
-                    class="clickable exhibit-model" data-exhibit-id="jwst" cursor-hover
+                    class="clickable exhibit-model" data-exhibit-id="jwst" data-triggerable-button="3" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane id="jwst-label-bg" position="0 0.2 0.61" width="1" height="0.3" color="#ecf0f1"
@@ -438,10 +455,10 @@
                 <a-text id="jwst-label-text" value="JWST" position="0 0.2 0.61" align="center" anchor="center"
                     color="#2c3e50"></a-text>
 
-                <a-entity id="jwst-hotspot-container" position="0 0.7 0.7">
+                <a-entity id="jwst-hotspot-container" position="0 0.7 0.620">
                     <a-image id="jwst-hotspot-icon" src="#hotspot-img" class="clickable" data-triggerable-button="3"
-                        billboard scale="0.5 0.5 0.5"></a-image>
-                    <a-entity id="infoPanelContainer3"></a-entity>
+                        billboard scale="0.5 0.5 0.5" cursor-hover></a-image>
+                    <a-entity id="infoPanelContainer3" position="2 0 0" rotation="0 -30 0"></a-entity>
                 </a-entity>
             </a-entity>
 
@@ -458,7 +475,7 @@
                 <!-- Luz no pedestal -->
                 <a-light type="point" intensity="0.3" position="0 1.3 0" color="#90ee90" distance="2"></a-light>
                 <a-entity id="saturnv-model-entity" gltf-model="#saturnv-model" position="0 2 0" scale="0.2 0.2 0.2"
-                    class="clickable exhibit-model" data-exhibit-id="saturnv" cursor-hover
+                    class="clickable exhibit-model" data-exhibit-id="saturnv" data-triggerable-button="4" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-entity id="saturnv-label-container" rotation="0 -45 0">
@@ -470,9 +487,9 @@
 
                 <a-entity id="saturnv-hotspot-container" position="-0.46386 0.7 0.46404" rotation="0 -45 0">
                     <a-image id="saturnv-hotspot-icon" src="#hotspot-img" class="clickable" data-triggerable-button="4"
-                        billboard="" scale="0.5 0.5 0.5" material="" geometry="" visible=""
-                        emissive="color:white"></a-image>
-                    <a-entity id="infoPanelContainer4" rotation="0 45 0"></a-entity>
+                        billboard="" scale="0.5 0.5 0.5" material="" geometry="" visible="" emissive="color:white"
+                        cursor-hover></a-image>
+                    <a-entity id="infoPanelContainer4" position="2 1 0" rotation="0 30 0"></a-entity>
                 </a-entity>
             </a-entity>
 
@@ -487,7 +504,7 @@
                 <!-- Luz no pedestal -->
                 <a-light type="point" intensity="0.3" position="0 1.3 0" color="#ff6347" distance="2"></a-light>
                 <a-entity id="iss-model-entity" gltf-model="#iss-model" position="0 2 0" scale="0.1 0.1 0.1"
-                    class="clickable exhibit-model" data-exhibit-id="iss" cursor-hover
+                    class="clickable exhibit-model" data-exhibit-id="iss" data-triggerable-button="5" cursor-hover
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane id="iss-label-bg" position="0.61 0.2 0" width="1" height="0.3" color="#ecf0f1" roughness="0.4"
@@ -495,10 +512,10 @@
                 <a-text id="iss-label-text" value="🌍 ISS" position="0.61 0.2 0" align="center" anchor="center"
                     color="#2c3e50" rotation="0 90 0"></a-text>
 
-                <a-entity id="iss-hotspot-container" position="0.8 0.7 0.030" rotation="0 90 0">
+                <a-entity id="iss-hotspot-container" position="0.605 0.7 0.030" rotation="0 90 0">
                     <a-image id="iss-hotspot-icon" src="#hotspot-img" class="clickable" data-triggerable-button="5"
-                        billboard scale="0.5 0.5 0.5"></a-image>
-                    <a-entity id="infoPanelContainer5"></a-entity>
+                        cursor-hover billboard scale="0.5 0.5 0.5"></a-image>
+                    <a-entity id="infoPanelContainer5" position="-2 0 0" rotation="0 30 0"></a-entity>
                 </a-entity>
             </a-entity>
 
@@ -513,7 +530,8 @@
                 <!-- Luz no pedestal -->
                 <a-light type="point" intensity="0.3" position="0 1.3 0" color="#da70d6" distance="2"></a-light>
                 <a-entity id="voyager-model-entity" gltf-model="#voyager-model" position="0 2 0" scale="0.15 0.15 0.15"
-                    class="clickable exhibit-model" data-exhibit-id="voyager" rotation="0 0 45" cursor-hover
+                    class="clickable exhibit-model" data-exhibit-id="voyager" data-triggerable-button="2"
+                    rotation="0 0 45" cursor-hover
                     animation="property: rotation; to: 0 360 45; loop: true; dur: 10000; easing: linear"></a-entity>
 
                 <a-plane id="voyager-label-bg" position="-0.61 0.2 0" width="1" height="0.3" color="#ecf0f1"
@@ -521,16 +539,72 @@
                 <a-text id="voyager-label-text" value="🛰️ Voyager" position="-0.61 0.2 0" align="center"
                     anchor="center" color="#2c3e50" rotation="0 -90 0"></a-text>
 
-                <a-entity id="voyager-hotspot-container" position="-0.8 0.7 0.030" rotation="0 -90 0">
+                <a-entity id="voyager-hotspot-container" position="-0.610 0.7 0.030" rotation="0 -90 0">
                     <a-image id="voyager-hotspot-icon" src="#hotspot-img" class="clickable" data-triggerable-button="2"
-                        billboard scale="0.5 0.5 0.5"></a-image>
-                    <a-entity id="infoPanelContainer2"></a-entity>
+                        cursor-hover billboard scale="0.5 0.5 0.5"></a-image>
+                    <a-entity id="infoPanelContainer2" position="2 0 0" rotation="0 -30 0"></a-entity>
                 </a-entity>
 
             </a-entity>
         </a-entity>
 
 
+
+
+
+        <a-entity position="0 1.6 9.7">
+
+            <!-- Anéis orbitantes ao redor do portal - Buraco Negro -->
+            <!-- Anel externo - disco de acreção -->
+            <a-torus color="#E0E0E0" radius="1.3" radius-tubular="0.02"
+                material="emissive: #FFFFFF; emissiveIntensity: 0.4; opacity: 0.6; transparent: true"
+                animation="property: rotation; to: 0 0 360; loop: true; dur: 4000; easing: linear">
+            </a-torus>
+
+            <!-- Anel interno escuro -->
+            <a-torus color="#424242" radius="1.1" radius-tubular="0.015"
+                material="emissive: #616161; emissiveIntensity: 0.3; opacity: 0.7; transparent: true"
+                animation="property: rotation; to: 0 0 -360; loop: true; dur: 3000; easing: linear">
+            </a-torus>
+
+            <!-- Partículas/esferas pequenas orbitando -->
+            <a-entity rotation="0 0 0"
+                animation="property: rotation; to: 0 0 360; loop: true; dur: 5000; easing: linear">
+                <a-sphere color="#E0E0E0" radius="0.035" position="1.2 0 0"
+                    material="emissive: #FFFFFF; emissiveIntensity: 0.6; opacity: 0.8; transparent: true"></a-sphere>
+                <a-sphere color="#9E9E9E" radius="0.035" position="-1.2 0 0"
+                    material="emissive: #BDBDBD; emissiveIntensity: 0.5; opacity: 0.8; transparent: true"></a-sphere>
+            </a-entity>
+
+            <!-- Brilho/glow principal ao redor do portal -->
+            <a-ring color="#E0E0E0" radius-inner="0.98" radius-outer="1.05"
+                material="emissive: #FFFFFF; emissiveIntensity: 0.4; opacity: 0.3; transparent: true; side: double"
+                animation="property: material.emissiveIntensity; from: 0.3; to: 0.7; loop: true; dur: 1500; dir: alternate; easing: easeInOutSine">
+            </a-ring>
+
+            <!-- Luz pontual do portal -->
+            <a-light type="point" intensity="1" color="#E0E0E0" distance="3" position="0 0 0.2"
+                animation="property: intensity; from: 0.8; to: 1.5; loop: true; dur: 1500; dir: alternate; easing: easeInOutSine">
+            </a-light>
+
+            <a-circle radius="1" class="clickable" segments="64" vr-link="href: index.html"
+                material="shader: portal; pano: #skyTexture; side: double">
+            </a-circle>
+
+            <!-- Placa de informação estilizada -->
+            <a-entity position="-3 0 -0.05" rotation="0 180 0">
+                <a-plane color="#1a1a1a" width="3" height="0.4"
+                    material="opacity: 0.9; emissive: #2a2a2a; emissiveIntensity: 0.3"
+                    animation="property: material.emissiveIntensity; from: 0.2; to: 0.4; loop: true; dur: 2000; dir: alternate; easing: easeInOutSine">
+                </a-plane>
+                <!-- Borda da placa -->
+
+                <a-text value=" <- Voltar p/ Tela Inicial" align="right" position="0 0 0.01" width="3" color="#FFFFFF"
+                    font="roboto">
+                </a-text>
+            </a-entity>
+
+        </a-entity>
 
 
 
@@ -543,17 +617,36 @@
             const buttons = document.querySelectorAll("[data-triggerable-button]");
 
             buttons.forEach((btn) => {
-                const openPanel = function () {
+                let fuseTimeout = null;
+
+                const openPanel = function (event) {
+                    // Cancela qualquer fuse pendente
+                    if (fuseTimeout) {
+                        clearTimeout(fuseTimeout);
+                        fuseTimeout = null;
+                    }
+
                     const id = btn.getAttribute("data-triggerable-button");
                     const template = document.querySelector(`#infoPanel${id}`);
-                    const container = btn.nextElementSibling;
+
+                    // Busca o container pelo ID correto (funciona tanto para hotspot quanto modelo)
+                    const container = document.querySelector(`#infoPanelContainer${id}`);
+
+                    if (!container) {
+                        console.error(`Container #infoPanelContainer${id} não encontrado`);
+                        return;
+                    }
 
                     hideAllInfoPanels();
 
                     const clone = document.importNode(template.content, true);
                     container.appendChild(clone);
 
-                    btn.setAttribute("visible", false);
+                    // Esconde o hotspot (ícone I) se existir
+                    const hotspotIcon = container.previousElementSibling;
+                    if (hotspotIcon && hotspotIcon.hasAttribute('src')) {
+                        hotspotIcon.setAttribute("visible", false);
+                    }
 
                     setTimeout(() => {
                         const closeBtn = container.querySelector("#close-btn");
@@ -576,8 +669,28 @@
                     }, 100);
                 };
 
+                // Evento de clique direto (prioridade)
                 btn.addEventListener("click", openPanel);
-                btn.addEventListener("mousedown", openPanel);
+
+                // Evento de fusing (para VR/cursor)
+                btn.addEventListener("fusing", (e) => {
+                    // Cancela fuse anterior se existir
+                    if (fuseTimeout) {
+                        clearTimeout(fuseTimeout);
+                    }
+                    // Inicia novo fuse com 2 segundos
+                    fuseTimeout = setTimeout(() => {
+                        openPanel(e);
+                    }, 2000);
+                });
+
+                // Cancela o fuse se sair do elemento
+                btn.addEventListener("mouseleave", () => {
+                    if (fuseTimeout) {
+                        clearTimeout(fuseTimeout);
+                        fuseTimeout = null;
+                    }
+                });
             });
         };
 
@@ -593,8 +706,93 @@
             }, 500);
         }
 
+        AFRAME.registerComponent('vr-link', {
+            schema: {
+                href: { type: 'string' },
+                fuseTimeout: { type: 'number', default: 2000 }
+            },
 
+            init() {
+                this.isFusing = false;
+                this.startTime = 0;
+
+                this.el.classList.add('clickable');
+
+                this.onEnter = this.onEnter.bind(this);
+                this.onLeave = this.onLeave.bind(this);
+                this.onClick = this.onClick.bind(this);
+
+                this.el.addEventListener('mouseenter', this.onEnter);
+                this.el.addEventListener('mouseleave', this.onLeave);
+                this.el.addEventListener('click', this.onClick);
+            },
+
+            onEnter() {
+                // inicia fuse manual
+                if (!this.el.sceneEl.is('vr-mode')) return;
+                this.isFusing = true;
+                this.startTime = performance.now();
+                this.el.emit('vr-fuse-start');
+            },
+
+            onLeave() {
+                this.isFusing = false;
+                this.startTime = 0;
+                this.el.emit('vr-fuse-cancel');
+            },
+
+            onClick() {
+                // desktop / trigger
+                this.navigate();
+            },
+
+            tick() {
+                if (!this.isFusing) return;
+
+                const elapsed = performance.now() - this.startTime;
+                if (elapsed >= this.data.fuseTimeout) {
+                    this.navigate();
+                    this.isFusing = false;
+                }
+            },
+
+            navigate() {
+                this.el.emit('vr-fuse-complete');
+                window.location.href = this.data.href;
+            }
+        });
+
+
+        AFRAME.registerShader('portal', {
+            schema: {
+                pano: { type: 'map', is: 'uniform' }
+            },
+
+            vertexShader: `
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+            `,
+
+            fragmentShader: `
+            uniform sampler2D pano;
+            varying vec2 vUv;
+
+            void main() {
+                // Mapeia UV do círculo (0 a 1) para centralizar a textura
+                vec2 uv = vUv;
+                gl_FragColor = texture2D(pano, uv);
+            }
+            `
+        });
+
+
+        // ...existing code...
     </script>
+
+
 </body>
 
 </html>
