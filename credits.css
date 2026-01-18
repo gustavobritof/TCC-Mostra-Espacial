@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.credits-container {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    background: radial-gradient(circle at center,
+            #000000 0%,
+            #0b1122 60%,
+            #060f20 100%);
+    color: #e6f0ff;
+    padding: 2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.back-button {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    background: rgba(230, 240, 255, 0.05);
+    color: #e6f0ff;
+    border: 1px solid rgba(230, 240, 255, 0.4);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px);
+    z-index: 100;
+}
+
+.back-button:hover {
+    background: rgba(230, 240, 255, 0.1);
+    border-color: rgba(230, 240, 255, 0.8);
+    box-shadow: 0 0 20px rgba(150, 200, 255, 0.25);
+    transform: translateX(-5px);
+}
+
+
+.credits-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 4rem;
+}
+
+.credits-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-indent: 0.3em;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-bottom: 3rem;
+}
+
+
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+
+.credit-card {
+    background: rgba(230, 240, 255, 0.03);
+    border: 1px solid rgba(230, 240, 255, 0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.credit-card:hover {
+    background: rgba(230, 240, 255, 0.06);
+    border-color: rgba(230, 240, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(150, 200, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.credit-card h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #a8d0ff;
+    letter-spacing: 0.05em;
+}
+
+.credit-card .model-info {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.credit-card .author,
+.credit-card .license {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.credit-card .author {
+    color: #b8e0ff;
+}
+
+.credit-card .license {
+    color: #90ceff;
+    font-weight: 500;
+}
+
+.source-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: #e6f0ff;
+    text-decoration: none;
+    border: 1px solid rgba(230, 240, 255, 0.3);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.source-link:hover {
+    background: rgba(230, 240, 255, 0.08);
+    border-color: rgba(230, 240, 255, 0.6);
+    box-shadow: 0 0 15px rgba(150, 200, 255, 0.2);
+}
+
+.acknowledgments,
+.project-info {
+    background: rgba(230, 240, 255, 0.03);
+    border: 1px solid rgba(230, 240, 255, 0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.acknowledgments h3,
+.project-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #a8d0ff;
+    letter-spacing: 0.1em;
+}
+
+.acknowledgments p,
+.project-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+}
+
+.acknowledgments a,
+.project-info a {
+    color: #90ceff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(144, 206, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.acknowledgments a:hover,
+.project-info a:hover {
+    color: #b8e0ff;
+    border-bottom-color: rgba(184, 224, 255, 0.6);
+}
+
+
+@media (max-width: 768px) {
+
+    .credits-container {
+        padding: 1rem;
+        height: 100vh;
+    }
+
+    .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .credits-content {
+        padding-top: 3rem;
+    }
+
+    .credits-content h1 {
+        font-size: clamp(2rem, 6vw, 3rem);
+        letter-spacing: 0.2em;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .credits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .credit-card {
+        padding: 1.5rem;
+    }
+
+    .credit-card h2 {
+        font-size: 1.1rem;
+    }
+
+    .acknowledgments,
+    .project-info {
+        padding: 1.5rem;
+    }
+}
+
+
+.credits-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.credits-container::-webkit-scrollbar-track {
+    background: rgba(11, 15, 20, 0.5);
+}
+
+.credits-container::-webkit-scrollbar-thumb {
+    background: rgba(230, 240, 255, 0.2);
+    border-radius: 5px;
+}
+
+.credits-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(230, 240, 255, 0.3);
+}

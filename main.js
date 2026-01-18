@@ -96,3 +96,7 @@ loadSVG("assets/earth-12-svgrepo-com.svg").then(draw);
 document.getElementById("enter").onclick = () => {
     window.location.href = "scene01.html";
 };
+
+document.getElementById("credits").onclick = () => {
+    window.location.href = "credits.html";
+};
